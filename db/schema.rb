@@ -10,7 +10,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_09_233404) do
+ActiveRecord::Schema.define(version: 2018_12_09_233946) do
+
+  create_table "care_moments", force: :cascade do |t|
+    t.integer "plant_id"
+    t.string "code"
+    t.integer "points", default: 0
+    t.date "date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "plants", force: :cascade do |t|
+    t.integer "user_id"
+    t.string "name"
+    t.string "species"
+    t.string "room"
+    t.integer "care_points", default: 0
+    t.boolean "favorite", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
