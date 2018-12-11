@@ -1,1 +1,55 @@
-<h1>Bonsai!</h1>
+<div class="home">
+  <div class="home-banner" style="background-image: url('https://nonagon.style/wp-content/uploads/2018/01/NONAGON-style-n9s-indoor-house-plant-green-garden-white-eco.jpg')">
+    <div class="box">
+      <h1>Bonsai!</h1>
+      <p class="tagline">Take care of your plants on a daily basis.</p>
+      <%= link_to "GET STARTED", plants_path, class: 'btn btn-primary btn-lg' %>
+    </div>
+  </div>
+
+  <div class="container home-incentives" id="go">
+    <div class="row incentive">
+      <div class="col-md">
+        <div class="incentive-cover" style="background-image: url('https://redsquareflowers.com//wp-content/uploads/2014/09/Ficus-Fiddle-leaf-tree-WHITE-984x984.jpg')"></div>
+      </div>
+      <div class="col-md">
+        <div class="incentive-details">
+          <h3>List your plants</h3>
+          <p>Add each plant of your home on Bonsai and we'll help you keep them healthy.</p>
+        </div>
+      </div>
+    </div>
+    <div class="row incentive">
+      <div class="col-md">
+        <div class="incentive-details">
+          <h3>Share your progress</h3>
+          <p>Keep track of your progress and share to the community how much you take care of your plants.</p>
+        </div>
+      </div>
+      <div class="col-md">
+        <div class="incentive-cover" style="background-image: url('https://cdn.shopify.com/s/files/1/0013/3529/6118/products/Pottery-Pots-Mini-Orb-L-Grey_Fiddle-leaf-fig-topiary_10.jpg?v=1537379014')"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="home-plants">
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <h2>Latest plants from our community</h2>
+          <p>Find some inspiration for your future plant.</p>
+        </div>
+      </div>
+      <div class="row">
+        <% @latest_plants.each do |plant| %>
+          <div class="col">
+            <%= link_to plant_path(plant) do %>
+              <div class="plant" style="background-image: url('<%= plant.photo_url %>')">
+              </div>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

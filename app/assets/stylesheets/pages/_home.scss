@@ -1,0 +1,54 @@
+.home {
+  p {
+    font-size: 1.2em;
+  }
+}
+
+.home-banner {
+  height: 100vh;
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .box {
+    background-color: white;
+    text-align: center;
+    padding: 3em 5.5em;
+  }
+
+  .tagline {
+    font-size: 1.5em;
+  }
+}
+
+.home-incentives {
+  margin-top: 5em;
+
+  .incentive {
+    margin-top: 3em;
+  }
+
+  .incentive-cover {
+    min-height: 550px;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+
+  .incentive-details {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 4em;
+    height: 100%;
+    text-align: center;
+  }
+}
+
+
+.home-plants {
+  margin-top: 5em;
+  margin-bottom: 3em;
+}
