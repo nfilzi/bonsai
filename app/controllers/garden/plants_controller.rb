@@ -41,6 +41,11 @@ class Garden::PlantsController < ApplicationController
     end
   end
 
+  def destroy
+    @plant.destroy!
+    redirect_to garden_root_path
+  end
+
   private
 
   def plant_params
