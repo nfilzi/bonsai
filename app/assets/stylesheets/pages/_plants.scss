@@ -1,3 +1,40 @@
 .plants-title {
   margin: 1.5em 0;
 }
+
+.plant-identity {
+  padding-top: 2em;
+  padding-left: 4em;
+
+  h1 {
+    color: $gray-700;
+    strong { color: $black; }
+    margin-top: 1em;
+  }
+
+  p { font-size: 1.2em; }
+
+  .plant-details {
+    margin-top: 1.5em;
+  }
+
+  .plant-gardener {
+    text-transform: uppercase;
+    color: $gray-600;
+  }
+}
+
+.plant-cover {
+  height: 500px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.gardener-other-plants {
+  margin-top: 3em;
+
+  h2 {
+    margin: 1em 0;
+  }
+}

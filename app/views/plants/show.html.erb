@@ -1,0 +1,48 @@
+<div class="container">
+  <div class="row">
+    <div class="col plant-cover" style="background-image: url('<%= @plant.photo_url %>')">
+    </div>
+    <div class="col plant-identity">
+      <h1>My name is <strong><%= @plant.name %></strong></h1>
+      <span class="plant-gardener">owned by <%= @plant.user.nickname %></span>
+
+      <div class="plant-details">
+        <p>
+          I'm <strong> <%= @plant.age_in_months %> months</strong> old,
+
+          <% if @plant.size == 'small' %>
+            I'm <strong>quite small</strong>
+          <% elsif @plant.size == 'medium' %>
+            I'm <strong>almost tall</strong>
+          <% else %>
+            I'm <strong>so tall</strong>
+          <% end %>
+
+          and you can find me in the <strong><%= @plant.room %></strong>.
+        </p>
+        <p>
+          Oh and my gardener takes extra care of me. I already received <strong><%= @plant.care_points %> doses</strong> of care 💚
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="gardener-other-plants">
+    <div class="row">
+      <div class="col">
+        <h2 class="text-center"><%= @plant.user.nickname %>'s other plants</h2>
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <% @gardener_other_plants.each do |plant| %>
+        <div class="plant">
+          <%= link_to plant_path(plant) do %>
+            <div class="plant-cover" style="background-image: url('<%= plant.photo_url %>')"></div>
+          <% end %>
+          <p class="plant-owner">by <%= plant.user.nickname %></p>
+        </div>
+      <% end %>
+      </div>
+    </div>
+  </div>
+</div>
