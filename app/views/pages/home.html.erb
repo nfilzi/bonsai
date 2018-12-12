@@ -1,5 +1,5 @@
 <div class="home">
-  <div class="home-banner" style="background-image: url('https://nonagon.style/wp-content/uploads/2018/01/NONAGON-style-n9s-indoor-house-plant-green-garden-white-eco.jpg')">
+  <div class="home-banner bg-image-placeholder" style="background-image: url('https://nonagon.style/wp-content/uploads/2018/01/NONAGON-style-n9s-indoor-house-plant-green-garden-white-eco.jpg')">
     <div class="box">
       <h1>Bonsai!</h1>
       <p class="tagline">Take care of your plants on a daily basis.</p>
@@ -10,7 +10,7 @@
   <div class="container home-incentives" id="go">
     <div class="row incentive">
       <div class="col-md">
-        <div class="incentive-cover" style="background-image: url('https://redsquareflowers.com//wp-content/uploads/2014/09/Ficus-Fiddle-leaf-tree-WHITE-984x984.jpg')"></div>
+        <div class="incentive-cover bg-image-placeholder" style="background-image: url('https://redsquareflowers.com//wp-content/uploads/2014/09/Ficus-Fiddle-leaf-tree-WHITE-984x984.jpg')"></div>
       </div>
       <div class="col-md">
         <div class="incentive-details">
@@ -27,7 +27,7 @@
         </div>
       </div>
       <div class="col-md">
-        <div class="incentive-cover" style="background-image: url('https://cdn.shopify.com/s/files/1/0013/3529/6118/products/Pottery-Pots-Mini-Orb-L-Grey_Fiddle-leaf-fig-topiary_10.jpg?v=1537379014')"></div>
+        <div class="incentive-cover bg-image-placeholder" style="background-image: url('https://cdn.shopify.com/s/files/1/0013/3529/6118/products/Pottery-Pots-Mini-Orb-L-Grey_Fiddle-leaf-fig-topiary_10.jpg?v=1537379014')"></div>
       </div>
     </div>
   </div>
@@ -44,7 +44,7 @@
         <% @latest_plants.each do |plant| %>
           <div class="plant">
             <%= link_to plant_path(plant) do %>
-              <div class="plant-cover" style="background-image: url('<%= plant.photo_url %>')"></div>
+              <div class="plant-cover bg-image-placeholder" style="background-image: url('<%= plant.photo_url %>')"></div>
             <% end %>
             <p class="plant-owner">by <%= plant.user.nickname %></p>
           </div>
