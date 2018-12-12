@@ -42,11 +42,11 @@
       </div>
       <div class="row">
         <% @latest_plants.each do |plant| %>
-          <div class="col">
+          <div class="plant">
             <%= link_to plant_path(plant) do %>
-              <div class="plant" style="background-image: url('<%= plant.photo_url %>')">
-              </div>
+              <div class="plant-cover" style="background-image: url('<%= plant.photo_url %>')"></div>
             <% end %>
+            <p class="plant-owner">by <%= plant.user.nickname %></p>
           </div>
         <% end %>
       </div>
