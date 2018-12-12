@@ -5,6 +5,10 @@ class Garden::PlantsController < ApplicationController
     @plants = current_user.plants
   end
 
+  def show
+    @moments = @plant.care_moments.order("date DESC")
+  end
+
   def new
     @plant = Plant.new
   end
