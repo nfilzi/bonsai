@@ -22,6 +22,21 @@ class Garden::PlantsController < ApplicationController
     end
   end
 
+  def edit
+  end
+
+  def update
+    @plant.assign_attributes(plant_params)
+
+    if @plant.save
+      flash[:notice] = 'Your plant was successfully updated.'
+      redirect_to garden_plant_path(@plant)
+    else
+      flash.now[:alert] = 'Unable to update your plant'
+      render :edit
+    end
+  end
+
   private
 
   def plant_params
