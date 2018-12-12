@@ -1,0 +1,26 @@
+.garden-plant {
+  margin: 1em 0;
+  margin-right: 1em;
+  width: 350px;
+  display: flex;
+
+  .details {
+    display: flex;
+    flex-direction: column;
+    color: $black;
+  }
+
+  .image {
+    margin-right: 1em;
+  }
+
+  .points {
+    margin-top: auto;
+    color: $primary;
+  }
+
+  .room {
+    color: $gray-600;
+    text-transform: uppercase;
+  }
+}

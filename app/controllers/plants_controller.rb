@@ -1,4 +1,6 @@
 class PlantsController < ApplicationController
+  skip_before_action :authenticate_user!
+
   def index
     @plants = Plant.order("created_at DESC")
   end
