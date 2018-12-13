@@ -1,6 +1,8 @@
 class User < ApplicationRecord
   LEVELS = {
     # NUMBER : RANGE
+    # beginner
+    0 => 0...10,
     # now
     1 => 10...20,
     # one week
@@ -21,6 +23,6 @@ class User < ApplicationRecord
   has_many :plants, dependent: :destroy
 
   def self.level_from_points(points)
-    LEVELS.find { |level, range| range.include?(points) }
+    LEVELS.find { |level, range| range.include?(points) }[0]
   end
 end
