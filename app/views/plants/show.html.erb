@@ -1,6 +1,6 @@
 <div class="container page-container">
   <div class="row">
-    <div class="col plant-cover bg-image-placeholder" style="background-image: url('<%= @plant.photo_url %>')">
+    <div class="col bg-image plant-cover" style="background-image: url('<%= @plant.photo_url %>')">
     </div>
     <div class="col plant-identity">
       <h1>My name is <strong><%= @plant.name %></strong></h1>
@@ -37,7 +37,7 @@
       <% @gardener_other_plants.each do |plant| %>
         <div class="plant">
           <%= link_to plant_path(plant) do %>
-            <div class="plant-cover bg-image-placeholder" style="background-image: url('<%= plant.photo_url %>')"></div>
+            <div class="bg-image plant-cover" style="background-image: url('<%= plant.photo_url %>')"></div>
           <% end %>
           <p class="plant-owner">by <%= plant.user.nickname %></p>
         </div>
