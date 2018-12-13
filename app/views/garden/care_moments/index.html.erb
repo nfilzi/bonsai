@@ -1,0 +1,33 @@
+<div class="container page-container">
+  <div class="row">
+    <div class="col col-lg-8">
+      <%= link_to '< back to dashboard', garden_root_path %>
+      <h1>History</h1>
+      <p class="lead">
+        Here you can find all moments you took care of your plants.
+        <br>
+        You already dedicated <strong><%= @care_moments.count %> moments</strong> to your plants for a total of <strong><%= current_user.care_points %> doses</strong> of care.
+      </p>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Plant</th>
+            <th>Action</th>
+            <th class="text-right">Doses of care</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @care_moments.each do |moment| %>
+            <tr>
+              <td><%= l(moment.date, format: :short) %></td>
+              <td><%= link_to moment.plant.name, garden_plant_path(moment.plant) %></td>
+              <td><%= moment.code %></td>
+              <td class="text-right"><%= moment.points %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   namespace :garden do
     root to: 'dashboard#show'
 
+    resources :care_moments, only: [:index]
+
     resources :plants do
       resources :care_moments, only: [:create]
     end

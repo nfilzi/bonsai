@@ -21,6 +21,7 @@ class User < ApplicationRecord
          :recoverable, :validatable
 
   has_many :plants, dependent: :destroy
+  has_many :care_moments, through: :plants
 
   def self.level_from_points(points)
     LEVELS.find { |level, range| range.include?(points) }[0]

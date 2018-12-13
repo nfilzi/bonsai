@@ -1,4 +1,8 @@
 class Garden::CareMomentsController < ApplicationController
+  def index
+    @care_moments = current_user.care_moments.order('date DESC')
+  end
+
   def create
     plant = current_user.plants.find(params[:plant_id])
     code  = params[:code]

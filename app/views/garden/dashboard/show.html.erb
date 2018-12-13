@@ -7,10 +7,18 @@
       </p>
 
       <p class="lead">
-        In total, you gave <strong><%= current_user.care_points %> doses</strong> of care to your plants.
+        <% if current_user.care_points > 0 %>
+          In total, you gave <strong><%= current_user.care_points %> doses</strong> of care to your plants.
+        <% end %>
+
         <% if current_user.level > 0 %>
           <br>
           Thanks to that, you reached <strong>level <%= current_user.level %></strong> out of <%= @last_level %>.
+        <% end %>
+
+        <% if current_user.care_points > 0 %>
+          <br>
+          <%= link_to 'See history', garden_care_moments_path %>
         <% end %>
       </p>
     </div>
