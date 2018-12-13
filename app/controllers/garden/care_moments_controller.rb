@@ -37,6 +37,6 @@ class Garden::CareMomentsController < ApplicationController
       flash[:alert] = "What action do you want to perform?"
     end
 
-    redirect_to garden_plant_path(plant)
+    redirect_to params[:src] == 'dashboard' ? garden_root_path : garden_plant_path(plant)
   end
 end

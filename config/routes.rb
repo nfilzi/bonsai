@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   resource  :leaderboard, only: [:show]
 
   namespace :garden do
-    root to: 'plants#index'
+    root to: 'dashboard#show'
 
     resources :plants do
       resources :care_moments, only: [:create]

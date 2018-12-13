@@ -1,0 +1,90 @@
+<div class="container page-container">
+  <div class="row">
+    <div class="col">
+      <h1 class="">Garden</h1>
+      <p class="lead">
+        Welcome back to your interior garden <%= current_user.nickname %>!
+      </p>
+
+      <p class="lead">
+        In total, you gave <strong><%= current_user.care_points %> doses</strong> of care to your plants.
+        <% if current_user.level > 0 %>
+          <br>
+          Thanks to that, you reached <strong>level <%= current_user.level %></strong> out of <%= @last_level %>.
+        <% end %>
+      </p>
+    </div>
+  </div>
+  <div class="row mt-5">
+    <div class="col col-lg-8">
+      <h2>Care needed</h2>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Plant</th>
+            <th></th>
+            <th>Care</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @plants_needing_care.each do |plant| %>
+            <tr>
+              <td height=100 width=100>
+                <%= link_to garden_plant_path(plant) do %>
+                  <div class="bg-image" style="height: 100%; background-image: url('<%= plant.photo_url %>')" >
+                  </div>
+                <% end %>
+              </td>
+              <td class="align-middle"><%= link_to plant.name, garden_plant_path(plant) %></td>
+              <td class="align-middle">
+                <% moments = [] %>
+                <% CareMoment::MOMENTS.keys.each do |code| %>
+                  <% moments << code if plant["#{code}_needed"] == 1 %>
+                <% end %>
+                <% moments = CareMoment::MOMENTS.keys if moments.empty? %>
+
+                <% moments.each do |code| %>
+                  <% if code == :water %>
+                    <%= link_to code, garden_plant_care_moments_path(plant, code: code, src: :dashboard), method: :post, class: "care-action btn btn-outline-info" %>
+                  <% elsif code == :repot %>
+                    <%= link_to code, garden_plant_care_moments_path(plant, code: code, src: :dashboard), method: :post, class: "care-action btn btn-outline-success" %>
+                  <% elsif code == :weed %>
+                    <%= link_to code, garden_plant_care_moments_path(plant, code: code, src: :dashboard), method: :post, class: "care-action btn btn-outline-secondary" %>
+                  <% else %>
+                    <%= link_to code, garden_plant_care_moments_path(plant, code: code, src: :dashboard), method: :post, class: "care-action btn btn-outline-secondary" %>
+                  <% end %>
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+    <div class="col col-lg-4">
+      <h2>Latest plants</h2>
+      <% if current_user.plants.count > 3 %>
+        <%= link_to 'See all plants', garden_plants_path %>
+      <% end %>
+
+      <div class="row">
+        <div class="col">
+          <% @latest_plants.each do |plant| %>
+            <%= link_to garden_plant_path(plant) do %>
+              <div class="garden-plant float-left">
+                <div class="image">
+                  <%= image_tag plant.photo_url, width: 150, height: 150 %>
+                </div>
+                <div class="details">
+                  <h2><%= truncate plant.name, length: 10 %></h2>
+                  <p class="room"><%= plant.room %></p>
+
+                  <p class="points">💚 <%= pluralize(plant.care_points, 'dose') %></p>
+                </div>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
