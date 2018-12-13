@@ -10,7 +10,7 @@
         <%= f.input :room, as: :select, collection: Plant::ROOMS, input_html: { class: "custom-select" } %>
         <%= f.input :photo_url %>
         <%= f.submit class: 'btn btn-primary' %>
-        <%= link_to 'Cancel', garden_root_path, class: 'btn btn-ligth'  %>
+        <%= link_to 'Cancel', garden_plants_path, class: 'btn btn-ligth'  %>
       <% end %>
     </div>
   </div>

@@ -43,7 +43,7 @@ class Garden::PlantsController < ApplicationController
 
   def destroy
     @plant.destroy!
-    redirect_to garden_root_path
+    redirect_to garden_plants_path
   end
 
   private
