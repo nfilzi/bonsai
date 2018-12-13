@@ -8,7 +8,7 @@
 
       <div class="plant-details">
         <p>
-          I'm <strong> <%= @plant.age_in_months %> months</strong> old,
+          I'm <strong> <%= pluralize @plant.age_in_months, 'month' %></strong> old,
 
           <% if @plant.size == 'small' %>
             I'm <strong>quite small</strong>

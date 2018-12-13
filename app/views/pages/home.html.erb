@@ -3,7 +3,7 @@
     <div class="box">
       <h1>Bonsai!</h1>
       <p class="tagline">Take care of your plants on a daily basis.</p>
-      <%= link_to "GET STARTED", plants_path, class: 'btn btn-primary btn-lg' %>
+      <%= link_to "GET STARTED", (user_signed_in? ? garden_root_path : plants_path), class: 'btn btn-primary btn-lg' %>
     </div>
   </div>
 
@@ -37,7 +37,11 @@
       <div class="row">
         <div class="col">
           <h2>Latest plants from our community</h2>
-          <p>Find some inspiration for your future plant.</p>
+          <p>
+            Find some inspiration for your future plant.
+            <br>
+            <%= link_to 'See all plants', plants_path %>
+          </p>
         </div>
       </div>
       <div class="row">

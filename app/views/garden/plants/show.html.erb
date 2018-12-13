@@ -14,7 +14,7 @@
           <h1><%= @plant.name %></h1>
           <p class="room"><%= @plant.room %></p>
           <ul class="list-unstyled">
-            <li><%= @plant.age_in_months %> months old</li>
+            <li><%= pluralize @plant.age_in_months, 'month' %></li>
             <li><%= @plant.size %> size</li>
           </ul>
         </div>
@@ -22,6 +22,7 @@
     </div>
     <div class="col">
       <div class="text-right" style="margin-top: 1em">
+        <%= link_to 'public page', plant_path(@plant), class: "btn btn-sm btn-outline-info" %>
         <%= link_to 'edit', edit_garden_plant_path(@plant), class: "btn btn-sm btn-outline-primary" %>
         <%= link_to 'remove', garden_plant_path(@plant), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-sm btn-outline-danger" %>
       </div>
