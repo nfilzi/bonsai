@@ -21,7 +21,7 @@
           and you can find me in the <strong><%= @plant.room %></strong>.
         </p>
         <p>
-          Oh and my gardener takes extra care of me. I already received <strong><%= @plant.care_points %> doses</strong> of care 💚
+          Oh and my gardener takes extra care of me. I already received <strong><%= number_with_delimiter @plant.care_points, delimiter: " " %> doses</strong> of care 💚
         </p>
       </div>
     </div>

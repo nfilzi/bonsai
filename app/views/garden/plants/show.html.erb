@@ -32,7 +32,7 @@
     <div class="col">
       <div class="care-actions text-center">
         <% if @moments.any? %>
-          <p class="care-title">You gave <strong><%= pluralize(@plant.care_points, 'dose') %></strong> of care 💚</p>
+          <p class="care-title">You gave <strong><%= number_with_delimiter @plant.care_points, delimiter: " " %> doses</strong> of care 💚</p>
         <% else %>
           <p class="care-title">You haven't taken care of your plant yet.</p>
         <% end %>

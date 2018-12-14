@@ -6,7 +6,7 @@
       <p class="lead">
         Here you can find all moments you took care of your plants.
         <br>
-        You already dedicated <strong><%= @care_moments.count %> moments</strong> to your plants for a total of <strong><%= current_user.care_points %> doses</strong> of care.
+        You already dedicated <strong><%= number_with_delimiter @care_moments.count, delimiter: " " %> moments</strong> to your plants for a total of <strong><%= number_with_delimiter current_user.care_points, delimiter: " " %> doses</strong> of care.
       </p>
       <table class="table">
         <thead>
@@ -23,7 +23,7 @@
               <td><%= l(moment.date, format: :short) %></td>
               <td><%= link_to moment.plant.name, garden_plant_path(moment.plant) %></td>
               <td><%= moment.code %></td>
-              <td class="text-right"><%= moment.points %></td>
+              <td class="text-right"><%= number_with_delimiter moment.points, delimiter: " " %></td>
             </tr>
           <% end %>
         </tbody>
