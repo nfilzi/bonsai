@@ -478,17 +478,13 @@ Plant.create!(
 
 puts 'Updating plants care points'
 Plant.all.each do |plant|
-  plant.update!(care_points: plant.care_moments.sum(:points))
+  plant.recalculate_care_points!
 end
 
 puts 'Updating users care points / level'
 User.all.each do |user|
-  points = user.plants.sum(:care_points)
-
-  user.update!(
-    care_points: points,
-    level: User.level_from_points(points)
-  )
+  user.recalculate_care_points!
+  user.recalculate_level!
 end
 
 puts 'Finished!'
