@@ -1,6 +1,6 @@
 class Garden::CareMomentsController < ApplicationController
   def index
-    @care_moments = current_user.care_moments.order('date DESC')
+    @care_moments = current_user.care_moments.includes(:plant).order('date DESC')
   end
 
   def create
