@@ -23,6 +23,19 @@ class User < ApplicationRecord
   has_many :plants, dependent: :destroy
   has_many :care_moments, through: :plants
 
+  scope :leaderboard, -> do
+    select(
+      <<~EOF
+        users.*,
+        count(distinct plants.id) AS plants_count,
+        count(care_moments.id) AS care_moments_count
+      EOF
+    ).
+    left_outer_joins(plants: :care_moments).
+    order('level DESC, care_points DESC').
+    group('users.id')
+  end
+
   def self.level_from_points(points)
     LEVELS.find { |level, range| range.include?(points) }[0]
   end

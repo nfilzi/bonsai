@@ -37,9 +37,12 @@
           <p class="care-title">You haven't taken care of your plant yet.</p>
         <% end %>
 
-        <% CareMoment::MOMENTS.each do |code, specs| %>
-          <% next if @last_moment_per_code[code.to_s] && Date.today < @last_moment_per_code[code.to_s].date + specs[:min_frequency_in_days].days %>
+        <% moments = [] %>
+        <% CareMoment::MOMENTS.keys.each do |code| %>
+          <% moments << code if @plant["#{code}_needed"] == 1 %>
+        <% end %>
 
+        <% moments.each do |code| %>
           <% if code == :water %>
             <%= link_to code, garden_plant_care_moments_path(@plant, code: code), method: :post, class: "care-action btn btn-outline-info" %>
           <% elsif code == :repot %>
