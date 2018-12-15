@@ -478,13 +478,12 @@ Plant.create!(
 
 puts 'Updating plants care points'
 Plant.all.each do |plant|
-  plant.recalculate_care_points!
+  UpdatePlantCarePointsService.new(plant).call
 end
 
 puts 'Updating users care points / level'
 User.all.each do |user|
-  user.recalculate_care_points!
-  user.recalculate_level!
+  UpdateUserPointsAndLevelService.new(user).call
 end
 
 puts 'Finished!'
