@@ -1,17 +1,13 @@
 class Garden::PlantsController < ApplicationController
-  before_action :set_plant, only: [:show, :edit, :update, :destroy]
+  before_action :set_plant, only: [:edit, :update, :destroy]
 
   def index
     @plants = current_user.plants
   end
 
   def show
+    @plant   = current_user.plants.include_care_status.find(params[:id])
     @moments = @plant.care_moments.order("date DESC")
-
-    @last_moment_per_code = @plant.care_moments.
-      select('max(date) AS date, code').
-      group(:code).
-      each_with_object({}) { |moment, moments| moments[moment.code] = moment }
   end
 
   def new
