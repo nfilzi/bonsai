@@ -1,5 +1,5 @@
 class LeaderboardController < ApplicationController
   def show
-    @top_users = User.leaderboard.limit(10)
+    @top_users = LeaderboardQuery.relation.ranking.limit(10)
   end
 end

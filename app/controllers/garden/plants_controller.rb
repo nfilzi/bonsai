@@ -6,7 +6,10 @@ class Garden::PlantsController < ApplicationController
   end
 
   def show
-    @plant   = current_user.plants.include_care_status.find(params[:id])
+    @plant   = PlantQuery.relation(current_user.plants).
+      include_care_status.
+      find(params[:id])
+
     @moments = @plant.care_moments.order("date DESC")
   end
 
