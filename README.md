@@ -1,24 +1,30 @@
-# README
+# Bonsai - a Ruby on Rails example app
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This Ruby on Rails app is used during Ruy on Rails Advanced training.
 
-Things you may want to cover:
+## Requirements
 
-* Ruby version
+- Ruby 2.5+
+- SQLite3
+- NodeJS
+- Yarn
 
-* System dependencies
+## Installation
 
-* Configuration
+```
+bundle install
+yarn install
+rails db:setup
+```
 
-* Database creation
+## Usage
 
-* Database initialization
+```
+rails s
+```
 
-* How to run the test suite
+Then go to [localhost:3000](http://localhost:3000)
 
-* Services (job queues, cache servers, search engines, etc.)
+## License
 
-* Deployment instructions
-
-* ...
+This project is released under the GPL License.
