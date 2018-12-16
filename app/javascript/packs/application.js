@@ -14,6 +14,8 @@ import { setupSmoothScroll } from "../components/smooth_scroll";
 
 console.log('Hello World from Webpacker');
 
+window.setupPopovers = setupPopovers;
+
 setupImagePreview();
 setupPopovers();
 setupSmoothScroll();

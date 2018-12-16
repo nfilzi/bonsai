@@ -5,24 +5,67 @@ function displayErrorMessage() {
 }
 
 function updateCareActionButtons() {
-  const actionButtons = document.querySelector('.care-action-buttons');
-  actionButtons.outerHTML = "<%= j render 'garden/plants/care_action_buttons', plant: @plant %>";
+  const actionButtonsBox = document.getElementById("plant-care-action-buttons-<%= @plant.id %>");
+  actionButtonsBox.outerHTML = "<%= j render 'garden/plants/care_action_buttons', plant: @plant, src: params[:src] %>";
+}
+
+// --------------- Dashboard ---------------
+function updateDashboard() {
+  removePlantFromCareIfNeeded();
+  updateUserStats();
+}
+
+function removePlantFromCareIfNeeded(){
+  const actionButtons = document.querySelectorAll("#plant-care-action-buttons-<%= @plant.id %> .care-action");
+  const plantRow      = document.getElementById("plant-care-needed-<%= @plant.id %>");
+
+  if (actionButtons.length == 0) {
+    plantRow.classList.add('d-none');
+  }
+}
+
+function updateUserStats() {
+  const userStats = document.getElementById('user-stats');
+
+  if (userStats) {
+    userStats.outerHTML = "<%= j render 'garden/dashboard/user_stats', user: @user %>";
+    window.setupPopovers();
+  }
+}
+
+// --------------- Plant ---------------
+
+function updatePlant() {
+  updateCareOverview();
+  updateCareMoments();
 }
 
 function updateCareMoments() {
   const careMoments = document.querySelector('.plant-care-moments');
-  careMoments.outerHTML = "<%= j render 'garden/plants/care_moments', moments: @moments %>";
+
+  if (careMoments) {
+    careMoments.outerHTML = "<%= j render 'garden/plants/care_moments', moments: @moments %>";
+  }
 }
 
 function updateCareOverview() {
   const careOverview = document.querySelector('.care-overview');
-  careOverview.outerHTML = "<%= j render 'garden/plants/care_overview', plant: @plant %>";
+
+  if (careOverview) {
+    careOverview.outerHTML = "<%= j render 'garden/plants/care_overview', plant: @plant %>";
+  }
 }
+
+// --------------- Main AJAX script ---------------
 
 <% if flash[:alert] %>
   displayErrorMessage();
 <% else %>
-  updateCareOverview();
   updateCareActionButtons();
-  updateCareMoments();
+
+  <% if params[:src] == 'dashboard' %>
+    updateDashboard();
+  <% else %>
+    updatePlant();
+  <% end %>
 <% end %>

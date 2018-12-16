@@ -1,0 +1,18 @@
+<p id="user-stats" class="lead">
+  <% if user.care_points > 0 %>
+    In total, you gave <strong><%= format_number user.care_points %> doses</strong> <span class="levels-details badge badge-pill badge-secondary" data-toggle="popover" title="Doses of care" data-content="Each time you take care of your plants (watering, repoting, etc.), you give them doses of care. Each action provides a different amount of care doses.">?</span> of care to your plants.
+  <% end %>
+
+  <% if user.level > 0 %>
+    <br>
+    Thanks to that, you reached <strong>level <%= user.level %></strong> out of <%= @last_level %>
+    <span class="levels-details badge badge-pill badge-secondary" data-toggle="popover" title="Levels" data-content="Each time you take care of your plants, we track your progress. Based on your amount of care doses, you'll be able to go to level <%= @last_level %> 💪">?</span>
+    <br>
+    <strong><%= user.points_to_next_level %> doses</strong> of care until next level.
+  <% end %>
+
+  <% if user.care_points > 0 %>
+    <br>
+    <%= link_to 'See history', garden_care_moments_path %>
+  <% end %>
+</p>
