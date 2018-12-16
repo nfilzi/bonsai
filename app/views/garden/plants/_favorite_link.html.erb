@@ -1,0 +1,9 @@
+<% if plant.favorite %>
+  <%= link_to garden_plant_favorite_path(plant), method: :delete, remote: true, class: "favorite-link emoji-button" do %>
+    <span class="favorite active">⭐</span>
+  <% end %>
+<% else %>
+  <%= link_to garden_plant_favorite_path(plant), method: :post, remote: true, class: "favorite-link emoji-button" do %>
+    <span class="favorite">⭐</span>
+  <% end %>
+<% end %>

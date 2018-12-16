@@ -5,13 +5,16 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-sm col-md-4">
-      <div class="garden-plant">
+    <div class="col-sm col-md-9">
+      <div class="garden-plant garden-plant-large">
         <div class="image">
           <%= image_tag @plant.photo_url, width: 200, height: 200 %>
         </div>
         <div class="details">
-          <h1><%= @plant.name %></h1>
+          <h1>
+            <%= @plant.name %>
+            <%= render 'favorite_link', plant: @plant %>
+          </h1>
           <p class="room"><%= @plant.room %></p>
           <ul class="list-unstyled">
             <li><%= pluralize @plant.age_in_months, 'month' %></li>

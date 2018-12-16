@@ -12,6 +12,7 @@ Rails.application.routes.draw do
     resources :care_moments, only: [:index]
 
     resources :plants do
+      resource  :favorite,     only: [:create, :destroy]
       resources :care_moments, only: [:create]
     end
   end

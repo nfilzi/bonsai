@@ -2,7 +2,7 @@ class Garden::PlantsController < ApplicationController
   before_action :set_plant, only: [:edit, :update, :destroy]
 
   def index
-    @plants = current_user.plants
+    @plants = current_user.plants.order('favorite DESC, name ASC')
   end
 
   def show

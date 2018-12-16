@@ -1,0 +1,6 @@
+function updateFavoriteLink() {
+  const favoriteLink = document.querySelector('.favorite-link');
+  favoriteLink.outerHTML = "<%= j render 'garden/plants/favorite_link', plant: @plant %>";
+}
+
+updateFavoriteLink();
