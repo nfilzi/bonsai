@@ -24,6 +24,9 @@ gem 'webpacker', '~> 3.5'
 group :development, :test do
   gem 'pry-rails'
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+
+  # Tests
+  gem 'factory_bot_rails', '~> 4.0'
   gem 'rspec-rails'
 end
 
