@@ -8,7 +8,9 @@
 // layout file, like app/views/layouts/application.html.erb
 import "bootstrap";
 import { setupPopovers } from "../components/popovers";
+import { setupSmoothScroll } from "../components/smooth_scroll";
 
 console.log('Hello World from Webpacker');
 
 setupPopovers();
+setupSmoothScroll();

@@ -3,7 +3,7 @@
     <div class="box">
       <h1>Bonsai!</h1>
       <p class="tagline">Take care of your plants on a daily basis.</p>
-      <%= link_to "GET STARTED", (user_signed_in? ? garden_root_path : plants_path), class: 'btn btn-primary btn-lg' %>
+      <%= link_to "GET STARTED", (user_signed_in? ? garden_root_path : '#go'), class: 'btn btn-primary btn-lg', "data-scroll" => !user_signed_in? %>
     </div>
   </div>
 
