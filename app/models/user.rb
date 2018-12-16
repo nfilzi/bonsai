@@ -22,11 +22,4 @@ class User < ApplicationRecord
 
   has_many :plants, dependent: :destroy
   has_many :care_moments, through: :plants
-
-  def points_to_next_level
-    next_level = LEVELS[level + 1]
-    return 0 unless next_level
-
-    next_level.min - care_points
-  end
 end
