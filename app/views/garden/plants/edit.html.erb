@@ -1,6 +1,7 @@
 <div class="container page-container">
-  <div class="row">
-    <div class="col-sm col-md-4 offset-md-4">
+  <div class="row align-items-center justify-content-around">
+    <div id="plant-image-preview" class="bg-image plant-image-preview" style="background-image: url('<%= @plant.photo_url %>')"></div>
+    <div class="col-sm col-md-4">
       <h1>Edition of <%= @plant.name %></h1>
       <%= render 'form', plant: @plant %>
     </div>

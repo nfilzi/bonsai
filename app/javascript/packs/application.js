@@ -7,10 +7,13 @@
 // To reference this file, add <%= javascript_pack_tag 'application' %> to the appropriate
 // layout file, like app/views/layouts/application.html.erb
 import "bootstrap";
+
+import { setupImagePreview } from "../components/image_preview";
 import { setupPopovers } from "../components/popovers";
 import { setupSmoothScroll } from "../components/smooth_scroll";
 
 console.log('Hello World from Webpacker');
 
+setupImagePreview();
 setupPopovers();
 setupSmoothScroll();
