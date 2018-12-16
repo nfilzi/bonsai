@@ -6,24 +6,7 @@
         Welcome <%= 'back' if @latest_plants.any? %> to your interior garden <%= @user.nickname %>!
       </p>
 
-      <p class="lead">
-        <% if @user.care_points > 0 %>
-          In total, you gave <strong><%= format_number @user.care_points %> doses</strong> <span class="levels-details badge badge-pill badge-secondary" data-toggle="popover" title="Doses of care" data-content="Each time you take care of your plants (watering, repoting, etc.), you give them doses of care. Each action provides a different amount of care doses.">?</span> of care to your plants.
-        <% end %>
-
-        <% if @user.level > 0 %>
-          <br>
-          Thanks to that, you reached <strong>level <%= @user.level %></strong> out of <%= @last_level %>
-          <span class="levels-details badge badge-pill badge-secondary" data-toggle="popover" title="Levels" data-content="Each time you take care of your plants, we track your progress. Based on your amount of care doses, you'll be able to go to level <%= @last_level %> 💪">?</span>
-          <br>
-          <strong><%= @user.points_to_next_level %> doses</strong> of care until next level.
-        <% end %>
-
-        <% if @user.care_points > 0 %>
-          <br>
-          <%= link_to 'See history', garden_care_moments_path %>
-        <% end %>
-      </p>
+      <%= render 'user_stats', user: @user %>
     </div>
   </div>
   <div class="row mt-5">
@@ -42,7 +25,7 @@
           </thead>
           <tbody>
             <% @plants_needing_care.each do |plant| %>
-              <tr>
+              <tr id="plant-care-needed-<%= plant.id %>">
                 <td height=100 width=100>
                   <%= link_to garden_plant_path(plant) do %>
                     <div class="bg-image" style="height: 100%; background-image: url('<%= plant.photo_url %>')" >
@@ -51,9 +34,7 @@
                 </td>
                 <td class="align-middle"><%= link_to plant.name, garden_plant_path(plant) %></td>
                 <td class="align-middle">
-                  <% plant_care_moments_needed(plant).each do |code| %>
-                    <%= link_to code, garden_plant_care_moments_path(plant, code: code, src: :dashboard), method: :post, class: care_moment_button_css_class(code) %>
-                  <% end %>
+                  <%= render 'garden/plants/care_action_buttons', plant: plant, src: :dashboard %>
                 </td>
               </tr>
             <% end %>

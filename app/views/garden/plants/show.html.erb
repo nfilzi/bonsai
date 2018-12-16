@@ -32,7 +32,7 @@
     <div class="col">
       <div class="care-actions text-center">
         <%= render 'care_overview', plant: @plant %>
-        <%= render 'care_action_buttons', plant: @plant %>
+        <%= render 'care_action_buttons', plant: @plant, src: :plant %>
       </div>
       <%= render 'care_moments', moments: @moments %>
     </div>
