@@ -4,7 +4,10 @@
       <%= image_tag plant.photo_url, width: 150, height: 150 %>
     </div>
     <div class="details">
-      <h2><%= truncate plant.name, length: 10 %></h2>
+      <h2>
+        <%= truncate plant.name, length: 10 %>
+        <span class="favorite <%= 'active' if plant.favorite %>">⭐</span>
+      </h2>
       <p class="room"><%= plant.room %></p>
 
       <p class="points">💚 <%= pluralize(plant.care_points, 'dose') %></p>
