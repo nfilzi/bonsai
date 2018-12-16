@@ -9,19 +9,11 @@
       <div class="plant-details">
         <p>
           I'm <strong> <%= pluralize @plant.age_in_months, 'month' %></strong> old,
-
-          <% if @plant.size == 'small' %>
-            I'm <strong>quite small</strong>
-          <% elsif @plant.size == 'medium' %>
-            I'm <strong>almost tall</strong>
-          <% else %>
-            I'm <strong>so tall</strong>
-          <% end %>
-
+          I'm <strong><%= human_plant_size(@plant) %></strong>
           and you can find me in the <strong><%= @plant.room %></strong>.
         </p>
         <p>
-          Oh and my gardener takes extra care of me. I already received <strong><%= number_with_delimiter @plant.care_points, delimiter: " " %> doses</strong> of care 💚
+          Oh and my gardener takes extra care of me. I already received <strong><%= format_number @plant.care_points %> doses</strong> of care 💚
         </p>
       </div>
     </div>
