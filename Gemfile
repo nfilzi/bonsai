@@ -28,6 +28,12 @@ group :development, :test do
   # Tests
   gem 'factory_bot_rails', '~> 4.0'
   gem 'rspec-rails'
+
+  # System tests
+  gem 'launchy'
+  gem 'capybara'
+  gem 'geckodriver-helper'
+  gem 'selenium-webdriver'
 end
 
 group :development do
