@@ -1,0 +1,28 @@
+function displayErrorMessage() {
+  const flashAlert = document.getElementById('flash-alert');
+  flashAlert.innerHTML = "<%= flash[:alert] %>";
+  flashAlert.classList.remove('d-none');
+}
+
+function updateCareActionButtons() {
+  const actionButtons = document.querySelector('.care-action-buttons');
+  actionButtons.outerHTML = "<%= j render 'garden/plants/care_action_buttons', plant: @plant %>";
+}
+
+function updateCareMoments() {
+  const careMoments = document.querySelector('.plant-care-moments');
+  careMoments.outerHTML = "<%= j render 'garden/plants/care_moments', moments: @moments %>";
+}
+
+function updateCareOverview() {
+  const careOverview = document.querySelector('.care-overview');
+  careOverview.outerHTML = "<%= j render 'garden/plants/care_overview', plant: @plant %>";
+}
+
+<% if flash[:alert] %>
+  displayErrorMessage();
+<% else %>
+  updateCareOverview();
+  updateCareActionButtons();
+  updateCareMoments();
+<% end %>

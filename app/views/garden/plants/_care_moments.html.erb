@@ -1,0 +1,28 @@
+<div class="plant-care-moments">
+  <% if moments.any? %>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Date</th>
+          <th>Action</th>
+          <th width=200>Doses of care</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% moments.each.with_index(1) do |moment, index| %>
+          <tr>
+            <td><%= index %></td>
+            <td><%= l(moment.date, format: :short) %></td>
+            <td>
+              <span class="<%= care_moment_badge_css_class(moment.code) %>">
+                <%= moment.code %>
+              </span>
+            </td>
+            <td><%= moment.points %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% end %>
+</div>

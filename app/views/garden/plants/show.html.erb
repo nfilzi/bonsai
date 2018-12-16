@@ -31,44 +31,10 @@
   <div class="row">
     <div class="col">
       <div class="care-actions text-center">
-        <p class="care-title">
-          <% if @moments.any? %>
-            You gave <strong><%= format_number @plant.care_points %> doses</strong> of care 💚
-          <% else %>
-            You haven't taken care of your plant yet.
-          <% end %>
-        </p>
-
-        <% plant_care_moments_needed(@plant).each do |code| %>
-          <%= link_to code, garden_plant_care_moments_path(@plant, code: code), method: :post, class: care_moment_button_css_class(code) %>
-        <% end %>
+        <%= render 'care_overview', plant: @plant %>
+        <%= render 'care_action_buttons', plant: @plant %>
       </div>
-      <% if @moments.any? %>
-        <table class="table">
-          <thead>
-            <tr>
-              <th>#</th>
-              <th>Date</th>
-              <th>Action</th>
-              <th width=200>Doses of care</th>
-            </tr>
-          </thead>
-          <tbody>
-            <% @moments.each.with_index(1) do |moment, index| %>
-              <tr>
-                <td><%= index %></td>
-                <td><%= l(moment.date, format: :short) %></td>
-                <td>
-                  <span class="<%= care_moment_badge_css_class(moment.code) %>">
-                    <%= moment.code %>
-                  </span>
-                </td>
-                <td><%= moment.points %></td>
-              </tr>
-            <% end %>
-          </tbody>
-        </table>
-      <% end %>
+      <%= render 'care_moments', moments: @moments %>
     </div>
   </div>
 </div>
