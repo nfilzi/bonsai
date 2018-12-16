@@ -14,7 +14,20 @@ class Garden::CareMomentsController < ApplicationController
       flash[:alert] = "Unable to save the action."
     end
 
-    redirect_to redirection_path
+    respond_to do |format|
+      format.html { redirect_to redirection_path }
+
+      format.js do
+        @plant = PlantQuery.relation(current_user.plants).
+          include_care_status.
+          find(@plant.id)
+
+        @moments = @plant.care_moments.order("date DESC")
+
+        render :create
+        flash.clear
+      end
+    end
   end
 
   private

@@ -1,11 +1,6 @@
-<% if flash[:notice] %>
-  <div class="alert alert-success" role="alert">
-    <%= flash[:notice] %>
-  </div>
-<% end %>
-
-<% if flash[:alert] %>
-  <div class="alert alert-danger" role="alert">
-    <%= flash[:alert] %>
-  </div>
-<% end %>
+<div id="flash-notice" class="alert alert-success <%= 'd-none' unless flash[:notice] %>" role="alert">
+  <%= flash[:notice] %>
+</div>
+<div id="flash-alert" class="alert alert-danger <%= 'd-none' unless flash[:alert] %>" role="alert">
+  <%= flash[:alert] %>
+</div>

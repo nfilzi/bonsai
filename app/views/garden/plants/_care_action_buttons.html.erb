@@ -1,0 +1,5 @@
+<div class="care-action-buttons">
+  <% plant_care_moments_needed(plant).each do |code| %>
+    <%= link_to code, garden_plant_care_moments_path(plant, code: code), method: :post, remote: true, class: care_moment_button_css_class(code) %>
+  <% end %>
+</div>
