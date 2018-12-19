@@ -10,7 +10,6 @@ import "bootstrap";
 
 import { setupImagePreview } from "../components/image_preview";
 import { setupPopovers } from "../components/popovers";
-import { setupSmoothScroll } from "../components/smooth_scroll";
 import { setupStimulus } from '../components/stimulus';
 
 console.log('Hello World from Webpacker');
@@ -21,4 +20,3 @@ setupPopovers();
 setupStimulus();
 
 setupImagePreview();
-setupSmoothScroll();
