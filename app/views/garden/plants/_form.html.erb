@@ -3,7 +3,7 @@
   <%= f.input :age_in_months, as: :select, collection: 1..5, input_html: { class: "custom-select"} %>
   <%= f.input :size, as: :select, collection: Plant::SIZES, input_html: { class: "custom-select" } %>
   <%= f.input :room, as: :select, collection: Plant::ROOMS, input_html: { class: "custom-select" } %>
-  <%= f.input :photo_url, input_html: { "data-image-preview" => true, "data-target" => "#plant-image-preview"} %>
+  <%= f.input :photo_url, input_html: { data: { action: "plants--image#preview", target: "plants--image.photoURLInput" }} %>
   <%= f.submit class: 'btn btn-primary' %>
   <%= link_to 'Cancel', (plant.new_record? ? garden_plants_path : garden_plant_path(plant)), class: 'btn btn-ligth'  %>
 <% end %>

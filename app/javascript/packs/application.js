@@ -8,7 +8,6 @@
 // layout file, like app/views/layouts/application.html.erb
 import "bootstrap";
 
-import { setupImagePreview } from "../components/image_preview";
 import { setupPopovers } from "../components/popovers";
 import { setupStimulus } from '../components/stimulus';
 
@@ -18,5 +17,3 @@ window.setupPopovers = setupPopovers;
 setupPopovers();
 
 setupStimulus();
-
-setupImagePreview();
