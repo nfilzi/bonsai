@@ -1,3 +1,9 @@
-a.emoji-button:hover {
-  text-decoration: none;
+a.emoji-button {
+  &:hover {
+    text-decoration: none;
+  }
+
+  &:active, &:focus {
+    outline: 0;
+  }
 }
