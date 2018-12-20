@@ -1,19 +1,52 @@
-<div class="container page-container">
+<div class="container-fluid">
   <div class="row">
-    <div class="col-sm">
-      <h1 class="text-center page-title">Plants from our community of interior gardeners</h1>
-      <%= form_tag plants_path, method: :get, class: "form-inline" do %>
-        <div class="col-sm col-md-12 text-center">
-          <label class="sr-only" for="query">Name</label>
-          <%= text_field_tag :query, @query, placeholder: "Plant characteristic", class: "form-control mb-2 mr-sm-2" %>
-          <%= submit_tag 'Search', class: 'btn btn-secondary mb-2' %>
-        </div>
+    <div class="col-sm col-md-2 offset-md-1">
+      <%= form_tag plants_path, method: :get, class: "form-inline mt-3" do %>
+        <label class="sr-only" for="query">Name</label>
+        <%= text_field_tag :query, @query, placeholder: "Tall, Entrance, etc.", class: "form-control mb-2 mr-sm-2 w-100" %>
       <% end %>
+
+      <% if @filters.present? %>
+        <p class="text-center">
+          <%= link_to 'reset', plants_path(query: @query) %>
+        </p>
+      <% end %>
+
+      <ul class="list-unstyled">
+        <% @search.aggregations.each do |filter_name, aggregation| %>
+          <li class="mt-3">
+            <strong><%= human_filter_name(filter_name) %></strong>
+
+            <% if active_filter?(@filters, filter_name) %>
+              <%= link_to 'reset', plants_path(@filters.merge(query: @query, filter_name => nil)) %>
+            <% end %>
+
+            <ul class="list-unstyled">
+              <% sorted_filter_values(filter_name, aggregation).each do |value| %>
+                <li>
+                  <% if active_filter?(@filters, filter_name) %>
+                    <%= filter_value_name(filter_name, value) %>
+                  <% else %>
+                    <%= link_to filter_value_name(filter_name, value), plants_path(@filters.merge(query: @query, filter_name => value['key'])) %>
+                  <% end %>
+                  (<%= value['doc_count'] %>)
+                </li>
+              <% end %>
+            </ul>
+          </li>
+        <% end %>
+      </ul>
     </div>
-  </div>
-  <div class="row justify-content-center">
-    <% @plants.each do |plant| %>
-      <%= render 'components/plant', plant: plant %>
-    <% end %>
+    <div class="col-sm col-md-9">
+      <div class="text-center">
+        <h1>Plants from our community of interior gardeners</h1>
+        <p class="lead"><%= @plants.length %> plants found</p>
+      </div>
+      <div class="row justify-content-center">
+        <% @plants.each do |plant| %>
+          <%= render 'components/plant', plant: plant %>
+        <% end %>
+      </div>
+    </div>
   </div>
 </div>
