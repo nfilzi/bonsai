@@ -1,0 +1,33 @@
+<div class="container page-container">
+  <div class="row">
+    <div class="col-sm">
+      <h1 class="page-title">Hi, I'm <strong><%= @user.nickname %></strong>!</h1>
+
+      <% if @plants.any? %>
+        <p style="font-size: 1.2em;">
+          I have <strong><%= format_number @plants.length %> plants</strong>.
+          <br>
+          I already took <strong><%= format_number @user.care_moments.count %> moments</strong> to take care of them for a total of <strong><%= format_number @user.care_points %></strong> doses of care.
+        </p>
+        <p style="font-size: 1.2em">
+          Oh and I'm now <strong>level <%= format_number @user.level %></strong>.
+        </p>
+      <% else %>
+        <p style="font-size: 1.2em;">
+          I don't have any plants yet 😢
+          <br>
+          I've got no experience yet with taking care of plants.
+        </p>
+        <p style="font-size: 1.2em;">
+          I'm still a newbie at level 0, but I'm working towards improving my plant caring skills.
+        </p>
+      <% end %>
+      <h2>My plants</h2>
+    </div>
+  </div>
+  <div class="row">
+    <% @plants.each do |plant| %>
+      <%= render 'components/plant', plant: plant %>
+    <% end %>
+  </div>
+</div>

@@ -3,7 +3,9 @@ Rails.application.routes.draw do
 
   devise_for :users
 
-  resources :plants,      only: [:index, :show]
+  resources :plants, only: [:index, :show]
+  resources :users , only: [:show]
+
   resource  :leaderboard, only: [:show], controller: 'leaderboard'
 
   namespace :garden do

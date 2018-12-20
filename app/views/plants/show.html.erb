@@ -4,7 +4,7 @@
     </div>
     <div class="col plant-identity">
       <h1>My name is <strong><%= @plant.name %></strong></h1>
-      <span class="plant-gardener">owned by <%= @plant.user.nickname %></span>
+      <span class="plant-gardener">owned by <%= link_to @plant.user.nickname, user_path(@plant.user) %></span>
 
       <div class="plant-details">
         <p>
