@@ -12,6 +12,7 @@ gem 'bootsnap', '>= 1.1.0', require: false
 # own gems
 gem 'devise'
 gem 'simple_form'
+gem 'searchkick'
 
 # assets
 gem 'bootstrap', '~> 4.1.3'
