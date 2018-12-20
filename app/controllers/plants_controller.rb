@@ -2,7 +2,16 @@ class PlantsController < ApplicationController
   skip_before_action :authenticate_user!
 
   def index
-    @plants = Plant.includes(:user).order("created_at DESC")
+    @query  = params[:query]
+    pattern = @query.presence || '*'
+
+    @search = Plant.search(
+      pattern,
+      order: { created_at: :desc },
+      scope_results: ->(results) { results.includes(:user) }
+    )
+
+    @plants = @search.results
   end
 
   def show

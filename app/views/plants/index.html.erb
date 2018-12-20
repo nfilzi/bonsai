@@ -1,7 +1,14 @@
 <div class="container page-container">
   <div class="row">
-    <div class="col">
+    <div class="col-sm">
       <h1 class="text-center page-title">Plants from our community of interior gardeners</h1>
+      <%= form_tag plants_path, method: :get, class: "form-inline" do %>
+        <div class="col-sm col-md-12 text-center">
+          <label class="sr-only" for="query">Name</label>
+          <%= text_field_tag :query, @query, placeholder: "Plant characteristic", class: "form-control mb-2 mr-sm-2" %>
+          <%= submit_tag 'Search', class: 'btn btn-secondary mb-2' %>
+        </div>
+      <% end %>
     </div>
   </div>
   <div class="row justify-content-center">

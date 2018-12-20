@@ -11,6 +11,8 @@ class Plant < ApplicationRecord
 
   scope :search_import, -> { includes(:user) }
 
+  private
+
   def search_data
     {
       name:          name,
