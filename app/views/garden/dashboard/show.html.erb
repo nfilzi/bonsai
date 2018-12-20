@@ -1,4 +1,4 @@
-<div class="container page-container">
+<div class="container page-container" data-controller="dashboard">
   <div class="row">
     <div class="col">
       <h1 class="">Garden</h1>
@@ -25,7 +25,7 @@
           </thead>
           <tbody>
             <% @plants_needing_care.each do |plant| %>
-              <tr id="plant-care-needed-<%= plant.id %>">
+              <tr id="plant-care-needed-<%= plant.id %>" data-controller="dashboard--care-plant">
                 <td height=100 width=100>
                   <%= link_to garden_plant_path(plant) do %>
                     <div class="bg-image" style="height: 100%; background-image: url('<%= plant.photo_url %>')" >

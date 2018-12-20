@@ -17,16 +17,27 @@ class Garden::CareMomentsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to redirection_path }
 
-      format.js do
-        @plant   = PlantQuery.relation(current_user.plants).
+      format.json do
+        @plant = PlantQuery.relation(current_user.plants).
           include_care_status.
           find(@plant.id)
 
         @moments = @plant.care_moments.order("date DESC")
-        @user    = UserPresenter.new(current_user)
 
-        render :create
-        flash.clear
+        content = {
+          buttons: render_partial('garden/plants/care_action_buttons', plant: @plant, src: params[:src])
+        }
+
+        if params[:src] == 'dashboard'
+          content[:user_stats] = render_partial('garden/dashboard/user_stats', user: UserPresenter.new(current_user))
+        else
+          content.merge!(
+            overview: render_partial('garden/plants/care_overview', plant: @plant),
+            moments:  render_partial('garden/plants/care_moments', moments: @moments)
+          )
+        end
+
+        render_json content
       end
     end
   end
@@ -54,6 +65,23 @@ class Garden::CareMomentsController < ApplicationController
 
   def redirection_path
     params[:src] == 'dashboard' ? garden_root_path : garden_plant_path(@plant)
+  end
+
+  def render_json(content)
+    render(
+      json: {
+        content: content,
+        alert:   flash[:alert],
+        notice:  flash[:notice]
+      },
+      status: (flash[:alert] ? :unprocessable_entity : :ok)
+    )
+
+    flash.clear
+  end
+
+  def render_partial(partial, locals = {})
+    render_to_string partial: partial, locals: locals, formats: [:html]
   end
 
   def set_code

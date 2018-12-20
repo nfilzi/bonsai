@@ -1,4 +1,4 @@
-<p id="user-stats" class="lead">
+<p id="user-stats" class="lead" data-target="dashboard.userStats">
   <% if user.care_points > 0 %>
     In total, you gave <strong><%= format_number user.care_points %> doses</strong> <span class="levels-details badge badge-pill badge-secondary" data-toggle="popover" title="Doses of care" data-content="Each time you take care of your plants (watering, repoting, etc.), you give them doses of care. Each action provides a different amount of care doses.">?</span> of care to your plants.
   <% end %>

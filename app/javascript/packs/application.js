@@ -13,7 +13,5 @@ import { setupStimulus } from '../components/stimulus';
 
 console.log('Hello World from Webpacker');
 
-window.setupPopovers = setupPopovers;
 setupPopovers();
-
 setupStimulus();

@@ -1,5 +1,5 @@
-<div id="plant-care-action-buttons-<%= plant.id %>">
+<div id="plant-care-action-buttons-<%= plant.id %>" data-controller="dashboard--care-moments" data-action="care-moments-updated->dashboard--care-plant#refresh care-moments-updated->dashboard#updateUserStats" data-target="plants--care-moments.buttons">
   <% plant_care_moments_needed(plant).each do |code| %>
-    <%= link_to code, garden_plant_care_moments_path(plant, code: code, src: src), method: :post, remote: true, class: care_moment_button_css_class(code) %>
+    <%= link_to code, garden_plant_care_moments_path(plant, code: code, src: src), method: :post, class: care_moment_button_css_class(code), remote: true, data: { type: "json", target: "dashboard--care-plant.careMomentNeeded", action: "ajax:success->plants--care-moments#refresh ajax:error->plants--care-moments#handleError ajax:success->dashboard--care-moments#refresh ajax:error->dashboard--care-moments#handleError" } %>
   <% end %>
 </div>
