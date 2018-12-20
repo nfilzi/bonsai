@@ -18,6 +18,7 @@ class Garden::CareMomentsController < ApplicationController
       format.html { redirect_to redirection_path }
 
       format.json do
+        # TODO: here we need and object to encapsulate all that view processing
         @plant = PlantQuery.relation(current_user.plants).
           include_care_status.
           find(@plant.id)
@@ -65,23 +66,6 @@ class Garden::CareMomentsController < ApplicationController
 
   def redirection_path
     params[:src] == 'dashboard' ? garden_root_path : garden_plant_path(@plant)
-  end
-
-  def render_json(content)
-    render(
-      json: {
-        content: content,
-        alert:   flash[:alert],
-        notice:  flash[:notice]
-      },
-      status: (flash[:alert] ? :unprocessable_entity : :ok)
-    )
-
-    flash.clear
-  end
-
-  def render_partial(partial, locals = {})
-    render_to_string partial: partial, locals: locals, formats: [:html]
   end
 
   def set_code

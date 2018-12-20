@@ -18,16 +18,7 @@ class Garden::FavoritesController < ApplicationController
       format.html { redirect_to garden_plant_path(@plant) }
 
       format.json do
-        partial = render_to_string(
-          partial: '/garden/plants/favorite_link',
-          locals:  { plant: @plant },
-          formats: [:html]
-        )
-
-        render json: {
-          error:   flash[:alert],
-          content: partial
-        }
+        render_json render_partial('garden/plants/favorite_link', plant: @plant)
       end
     end
   end
