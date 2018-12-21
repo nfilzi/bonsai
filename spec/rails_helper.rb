@@ -72,6 +72,8 @@ RSpec.configure do |config|
   # config.filter_gems_from_backtrace("gem name")
 
   config.before(:each, type: :system) do
+    config.include Devise::Test::IntegrationHelpers
+
     driven_by :firefox_headless
   end
 end
