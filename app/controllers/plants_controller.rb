@@ -8,6 +8,8 @@ class PlantsController < ApplicationController
   def show
     @plant = Plant.find(params[:id])
 
-    @gardener_other_plants = Plant.where.not(owner: current_user).eager_load(:owner)
+    @gardener_other_plants = @plant.owner.plants.
+      where.not(id: @plant.id).
+      eager_load(:owner)
   end
 end
