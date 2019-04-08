@@ -11,7 +11,17 @@ class Garden::PlantsController < ApplicationController
     @last_moment_per_code = @plant.care_moments.
       select('max(date) AS date, code').
       group(:code).
+      # [
+      #   <CareMoment code="water">,
+      #   <CareMoment code="repot">,
+      #   <CareMoment code="weed">
+      # ]
       each_with_object({}) { |moment, moments| moments[moment.code] = moment }
+      # => {
+      #   water: <CareMoment code="water">,
+      #   repot: <CareMoment code="repot">,
+      #   weed:  <CareMoment code="weed">
+      # }
   end
 
   def new
