@@ -4,7 +4,7 @@
     </div>
     <div class="col plant-identity">
       <h1>My name is <strong><%= @plant.name %></strong></h1>
-      <span class="plant-gardener">owned by <%= @plant.user.nickname %></span>
+      <span class="plant-gardener">owned by <%= @plant.owner.nickname %></span>
 
       <div class="plant-details">
         <p>
@@ -30,7 +30,7 @@
   <div class="gardener-other-plants">
     <div class="row">
       <div class="col">
-        <h2 class="text-center"><%= @plant.user.nickname %>'s other plants</h2>
+        <h2 class="text-center"><%= @plant.owner.nickname %>'s other plants</h2>
       </div>
     </div>
     <div class="row justify-content-center">
@@ -39,7 +39,7 @@
           <%= link_to plant_path(plant) do %>
             <div class="bg-image plant-cover" style="background-image: url('<%= plant.photo_url %>')"></div>
           <% end %>
-          <p class="plant-owner">by <%= plant.user.nickname %></p>
+          <p class="plant-owner">by <%= plant.owner.nickname %></p>
         </div>
       <% end %>
       </div>

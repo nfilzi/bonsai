@@ -20,7 +20,7 @@ class Garden::PlantsController < ApplicationController
 
   def create
     @plant = Plant.new(plant_params)
-    @plant.user = current_user
+    @plant.owner = current_user
 
     if @plant.save
       flash[:notice] = 'Your plant was successfully added to your garden.'
