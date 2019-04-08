@@ -2,7 +2,7 @@ class PlantsController < ApplicationController
   skip_before_action :authenticate_user!
 
   def index
-    @plants = Plant.order("created_at DESC")
+    @plants = Plant.eager_load(:user).order("plants.created_at DESC")
   end
 
   def show
