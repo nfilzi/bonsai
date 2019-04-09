@@ -1,0 +1,15 @@
+<tr>
+  <td height=100 width=100>
+    <!-- Le lien autour de l'image ne fonctionne pas sur Chrome, et collapse la photo -->
+    <%# link_to garden_plant_path(plant) do %>
+      <div class="bg-image" style="height: 100%; width: 100%; background-image: url('<%= plant.photo_url %>')" >
+      </div>
+    <%# end %>
+  </td>
+  <td class="align-middle"><%= link_to plant.name, garden_plant_path(plant) %></td>
+  <td class="align-middle">
+    <% plant.needed_care_moments.each do |code| %>
+      <%= render 'garden/care_moments/action', plant: plant, code: code %>
+    <% end %>
+  </td>
+</tr>

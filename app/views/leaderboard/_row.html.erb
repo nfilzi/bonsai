@@ -1,0 +1,10 @@
+<tr class="<%= 'table-warning' if user.in_top_three %>">
+  <td class="text-center">
+    <%= user.rank_emoji %>
+  </td>
+  <td><%= user.nickname %></td>
+  <td><%= user.plants_count %></td>
+  <td><%= user.care_moments_count %></td>
+  <td class="text-right"><%= number_with_delimiter user.care_points, delimiter: " " %></td>
+  <td class="text-center"><%= user.level %></td>
+</tr>

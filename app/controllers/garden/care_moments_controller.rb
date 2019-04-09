@@ -1,5 +1,5 @@
 class Garden::CareMomentsController < ApplicationController
-  before_action :ensure_code_presence
+  before_action :ensure_code_presence, only: :create
 
   def index
     @care_moments = current_user.care_moments.eager_load(:plant).order('date DESC')
@@ -23,7 +23,7 @@ class Garden::CareMomentsController < ApplicationController
   def ensure_code_presence
     return if params[:code]
 
-    flast[:alert] = "What action do you want to perform?"
+    flash[:alert] = "What action do you want to perform?"
     redirect_to redirect_path
   end
 

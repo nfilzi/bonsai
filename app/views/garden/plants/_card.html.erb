@@ -1,0 +1,13 @@
+<%= link_to garden_plant_path(plant) do %>
+  <div class="garden-plant float-left">
+    <div class="image">
+      <%= image_tag plant.photo_url, width: 150, height: 150 %>
+    </div>
+    <div class="details">
+      <h2><%= truncate plant.name, length: 10 %></h2>
+      <p class="room"><%= plant.room %></p>
+
+      <p class="points">💚 <%= number_with_delimiter plant.care_points, delimiter: " " %> doses</p>
+    </div>
+  </div>
+<% end %>

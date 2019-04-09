@@ -1,0 +1,6 @@
+<tr>
+  <td><%= l(moment.date, format: :short) %></td>
+  <td><%= link_to moment.plant.name, garden_plant_path(moment.plant) %></td>
+  <td><%= moment.code %></td>
+  <td class="text-right"><%= number_with_delimiter moment.points, delimiter: " " %></td>
+</tr>

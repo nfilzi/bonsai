@@ -74,6 +74,7 @@ class Garden::PlantsController < ApplicationController
   end
 
   def set_plant
-    @plant = current_user.plants.find(params[:id])
+    @plant = current_user.plants.include_care_status.find(params[:id])
+    @plant = PlantPresenter.new(@plant)
   end
 end
