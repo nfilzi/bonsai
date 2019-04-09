@@ -1,5 +1,7 @@
 class Garden::DashboardController < ApplicationController
   def show
+    @user = UserPresenter.new(current_user)
+
     @last_level = User::LEVELS.keys.last
 
     @latest_plants       = current_user.plants.order("created_at DESC").limit(3)
