@@ -7,9 +7,7 @@ module Plants
     end
 
     def call
-      validate_contract
-
-      if @contract.valid?
+      if validate_contract
         build_care_moment
 
         if @care_moment.save
@@ -29,6 +27,8 @@ module Plants
     def validate_contract
       @contract = Contract.new(@plant, @care_moment_code).validate
       @errors += @contract.errors
+
+      @contract.valid?
     end
 
     def care_moment_specs

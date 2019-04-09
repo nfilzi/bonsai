@@ -6,7 +6,7 @@ module Plants
       end
 
       def errors_messages
-        errors.map {|error| error[:message]}.join("\n")
+        errors.map { |error| error[:message] }.join("\n")
       end
     end
   end
