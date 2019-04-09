@@ -14,7 +14,7 @@ pierre   = User.create!(nickname: 'Pierre',   email: 'pierre@mail.com',   passwo
 puts 'Creating plants...'
 # LIVING ROOM
 Plant.create!(
-  user: jad,
+  owner: jad,
   name: 'Skinny',
   age_in_months: 10,
   size: :tall,
@@ -27,7 +27,7 @@ Plant.create!(
   ]
 )
 Plant.create!(
-  user: jad,
+  owner: jad,
   name: 'Jake',
   age_in_months: 13,
   size: :tall,
@@ -38,7 +38,7 @@ Plant.create!(
   ]
 )
 Plant.create!(
-  user: nicolas,
+  owner: nicolas,
   name: 'Hairy',
   age_in_months: 3,
   size: :medium,
@@ -50,7 +50,7 @@ Plant.create!(
   ]
 )
 Plant.create!(
-  user: nicolas,
+  owner: nicolas,
   name: 'Oliver',
   age_in_months: 1,
   size: :tall,
@@ -61,7 +61,7 @@ Plant.create!(
   ]
 )
 Plant.create!(
-  user: nicole,
+  owner: nicole,
   name: 'Elf',
   age_in_months: 7,
   size: :tall,
@@ -73,7 +73,7 @@ Plant.create!(
   ]
 )
 Plant.create!(
-  user: nicole,
+  owner: nicole,
   name: 'Bob',
   age_in_months: 2,
   size: :medium,
@@ -84,7 +84,7 @@ Plant.create!(
   ]
 )
 Plant.create!(
-  user: feiko,
+  owner: feiko,
   name: 'Janet',
   age_in_months: 1,
   size: :small,
@@ -95,7 +95,7 @@ Plant.create!(
   ]
 )
 Plant.create!(
-  user: feiko,
+  owner: feiko,
   name: 'Bobby',
   age_in_months: 1,
   size: :small,
@@ -107,7 +107,7 @@ Plant.create!(
   ]
 )
 Plant.create!(
-  user: cecile,
+  owner: cecile,
   name: 'Albert',
   age_in_months: 3,
   size: :medium,
@@ -122,7 +122,7 @@ Plant.create!(
   ]
 )
 Plant.create!(
-  user: cecile,
+  owner: cecile,
   name: 'Elisabeth',
   age_in_months: 3,
   size: :tall,
@@ -137,7 +137,7 @@ Plant.create!(
   ]
 )
 Plant.create!(
-  user: cecile,
+  owner: cecile,
   name: 'Gina',
   age_in_months: 4,
   size: :small,
@@ -152,7 +152,7 @@ Plant.create!(
   ]
 )
 Plant.create!(
-  user: pierre,
+  owner: pierre,
   name: 'Ron',
   age_in_months: 1,
   size: :tall,
@@ -163,7 +163,7 @@ Plant.create!(
   ]
 )
 Plant.create!(
-  user: pierre,
+  owner: pierre,
   name: 'Louise',
   age_in_months: 5,
   size: :medium,
@@ -174,7 +174,7 @@ Plant.create!(
   ]
 )
 Plant.create!(
-  user: capucine,
+  owner: capucine,
   name: 'Gabin',
   age_in_months: 10,
   size: :tall,
@@ -186,7 +186,7 @@ Plant.create!(
   ]
 )
 Plant.create!(
-  user: claire,
+  owner: claire,
   name: 'Ginger',
   age_in_months: 9,
   size: :tall,
@@ -201,7 +201,7 @@ Plant.create!(
 
 # BEDROOM
 Plant.create!(
-  user: cecile,
+  owner: cecile,
   name: 'Olivia',
   age_in_months: 5,
   size: :medium,
@@ -216,7 +216,7 @@ Plant.create!(
   ]
 )
 Plant.create!(
-  user: cecile,
+  owner: cecile,
   name: 'Cookie',
   age_in_months: 2,
   size: :small,
@@ -230,7 +230,7 @@ Plant.create!(
   ]
 )
 Plant.create!(
-  user: jad,
+  owner: jad,
   name: 'James',
   age_in_months: 6,
   size: :small,
@@ -242,7 +242,7 @@ Plant.create!(
   ]
 )
 Plant.create!(
-  user: claire,
+  owner: claire,
   name: 'Harold',
   age_in_months: 2,
   size: :tall,
@@ -255,7 +255,7 @@ Plant.create!(
   ]
 )
 Plant.create!(
-  user: feiko,
+  owner: feiko,
   name: 'Joseph',
   age_in_months: 6,
   size: :small,
@@ -266,7 +266,7 @@ Plant.create!(
   ]
 )
 Plant.create!(
-  user: capucine,
+  owner: capucine,
   name: 'Chester',
   age_in_months: 2,
   size: :medium,
@@ -278,7 +278,7 @@ Plant.create!(
   ]
 )
 Plant.create!(
-  user: nicolas,
+  owner: nicolas,
   name: 'Carter',
   age_in_months: 8,
   size: :medium,
@@ -289,7 +289,7 @@ Plant.create!(
   ]
 )
 Plant.create!(
-  user: pierre,
+  owner: pierre,
   name: 'Stick',
   age_in_months: 5,
   size: :small,
@@ -302,7 +302,7 @@ Plant.create!(
 
 # ENTRANCE
 Plant.create!(
-  user: capucine,
+  owner: capucine,
   name: 'Paul',
   age_in_months: 2,
   size: :medium,
@@ -313,7 +313,7 @@ Plant.create!(
   ]
 )
 Plant.create!(
-  user: capucine,
+  owner: capucine,
   name: 'Jasper',
   age_in_months: 2,
   size: :small,
@@ -326,7 +326,7 @@ Plant.create!(
   ]
 )
 Plant.create!(
-  user: claire,
+  owner: claire,
   name: 'Sonia',
   age_in_months: 3,
   size: :small,
@@ -337,7 +337,7 @@ Plant.create!(
   ]
 )
 Plant.create!(
-  user: pierre,
+  owner: pierre,
   name: 'Joshephine',
   age_in_months: 13,
   size: :medium,
@@ -348,7 +348,7 @@ Plant.create!(
   ]
 )
 Plant.create!(
-  user: cecile,
+  owner: cecile,
   name: 'Cucumber',
   age_in_months: 4,
   size: :tall,
@@ -364,7 +364,7 @@ Plant.create!(
 
 # OFFICE
 Plant.create!(
-  user: claire,
+  owner: claire,
   name: 'Alex',
   age_in_months: 7,
   size: :medium,
@@ -375,7 +375,7 @@ Plant.create!(
   ]
 )
 Plant.create!(
-  user: cecile,
+  owner: cecile,
   name: 'Tiny',
   age_in_months: 1,
   size: :small,
@@ -391,7 +391,7 @@ Plant.create!(
 
 # BATHROOM
 Plant.create!(
-  user: nicolas,
+  owner: nicolas,
   name: 'Jelly',
   age_in_months: 2,
   size: :medium,
@@ -403,7 +403,7 @@ Plant.create!(
   ]
 )
 Plant.create!(
-  user: nicolas,
+  owner: nicolas,
   name: 'Green',
   age_in_months: 1,
   size: :small,
@@ -415,7 +415,7 @@ Plant.create!(
   ]
 )
 Plant.create!(
-  user: nicole,
+  owner: nicole,
   name: 'Apricot',
   age_in_months: 7,
   size: :medium,
@@ -426,7 +426,7 @@ Plant.create!(
   ]
 )
 Plant.create!(
-  user: cecile,
+  owner: cecile,
   name: 'Twin',
   age_in_months: 1,
   size: :small,
@@ -440,7 +440,7 @@ Plant.create!(
   ]
 )
 Plant.create!(
-  user: jad,
+  owner: jad,
   name: 'Karmena',
   age_in_months: 3,
   size: :small,
@@ -452,7 +452,7 @@ Plant.create!(
   ]
 )
 Plant.create!(
-  user: claire,
+  owner: claire,
   name: 'Tea',
   age_in_months: 1,
   size: :small,
@@ -463,7 +463,7 @@ Plant.create!(
   ]
 )
 Plant.create!(
-  user: capucine,
+  owner: capucine,
   name: 'Dougie',
   age_in_months: 5,
   size: :medium,
@@ -478,13 +478,13 @@ Plant.create!(
 
 puts 'Updating plants care points'
 Plant.all.each do |plant|
-  plant.recalculate_care_points!
+  Plants::UpdatePoints.new(plant).call
 end
 
 puts 'Updating users care points / level'
 User.all.each do |user|
-  user.recalculate_care_points!
-  user.recalculate_level!
+  ::Users::UpdateCarePoints.new(user).call
+  ::Users::UpdateLevel.new(user).call
 end
 
 puts 'Finished!'

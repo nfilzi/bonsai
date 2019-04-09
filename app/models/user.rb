@@ -23,22 +23,10 @@ class User < ApplicationRecord
   has_many :plants, dependent: :destroy
   has_many :care_moments, through: :plants
 
-  def self.level_from_points(points)
-    LEVELS.find { |level, range| range.include?(points) }[0]
-  end
-
   def points_to_next_level
     next_level = LEVELS[level + 1]
     return 0 unless next_level
 
     next_level.min - care_points
-  end
-
-  def recalculate_care_points!
-    update_attribute(:care_points, plants.sum(:care_points))
-  end
-
-  def recalculate_level!
-    update_attribute(:level, User.level_from_points(care_points))
   end
 end
