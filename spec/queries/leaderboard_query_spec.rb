@@ -7,29 +7,17 @@ RSpec.describe LeaderboardQuery, type: :query do
 
   describe ".execute" do
     before :each do
-      @top_10_users = []
+      user_2 = create(:users, level: 5, care_points: 1700)
+      user_1 = create(:users, level: 6, care_points: 1991)
+      user_4 = create(:users, level: 3, care_points: 200)
+      user_3 = create(:users, level: 4, care_points: 1300)
+      user_5 = create(:users, level: 2, care_points: 20)
 
-      @top_10_users << create(:users, level: 6, care_points: 1991)
-      @top_10_users << create(:users, level: 5, care_points: 1700)
-      @top_10_users << create(:users, level: 5, care_points: 1520)
-      @top_10_users << create(:users, level: 4, care_points: 1300)
-      @top_10_users << create(:users, level: 4, care_points: 1100)
-      @top_10_users << create(:users, level: 3, care_points: 400)
-      @top_10_users << create(:users, level: 3, care_points: 399)
-      @top_10_users << create(:users, level: 3, care_points: 320)
-      @top_10_users << create(:users, level: 3, care_points: 200)
-      @top_10_users << create(:users, level: 2, care_points: 20)
-
-      create(:users, level: 1, care_points: 15)
-      create(:users, level: 0, care_points: 9)
+      @top_users = [user_1, user_2, user_3, user_4, user_5]
     end
 
-    it "returns 10 users exactly" do
-      expect(leaderboard_query.relation.execute.to_a.count).to eq(10)
-    end
-
-    it "returns top 10 users" do
-      expect(leaderboard_query.relation.execute).to eq(@top_10_users)
+    it "returns top users" do
+      expect(leaderboard_query.relation.execute).to match_array(@top_users)
     end
   end
 end

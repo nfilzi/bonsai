@@ -29,6 +29,7 @@ group :development, :test do
   gem 'shoulda-matchers'
 
   gem 'pry-rails'
+  gem 'pry-byebug'
 end
 
 group :development do

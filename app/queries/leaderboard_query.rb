@@ -9,7 +9,6 @@ class LeaderboardQuery < BaseQuery
     ).
     left_outer_joins(:plants, :care_moments).
     order('level DESC, users.care_points DESC').
-    group("users.id").
-    limit(10)
+    group("users.id")
   end
 end

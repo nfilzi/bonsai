@@ -5,9 +5,9 @@ FactoryBot.define do
     size           { 'small' }
     photo_url      { 'https://img-3.journaldesfemmes.fr/reCRzYkzv7psZov1ygWXI40WtQE=/910x607/smart/1c0c9fde8379424f9a32318875da1203/ccmcms-jdf/10950238.jpg' }
     care_moments   { [] }
-  end
 
-  trait :with_owner do
-    association :owner, factory: :users
+    trait :with_owner do
+      association :owner, factory: :users
+    end
   end
 end
