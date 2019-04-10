@@ -11,7 +11,7 @@ module Users
     private
 
     def new_level_from_points
-      User::LEVELS.find { |level, range| range.include?(@user.care_points) }[0]
+      User::LEVELS.find { |_, range| range.include?(@user.care_points) }[0]
     end
   end
 end

@@ -22,13 +22,13 @@ gem 'turbolinks', '~> 5'
 gem 'webpacker', '~> 3.5'
 
 group :development, :test do
+  gem 'rubocop'
   gem 'rspec-rails', '~> 3.8'
 
   gem 'factory_bot_rails'
   gem 'shoulda-matchers'
 
   gem 'pry-rails'
-  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 end
 
 group :development do

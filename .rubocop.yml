@@ -1,0 +1,54 @@
+AllCops:
+  Exclude:
+    - 'bin/**/*'
+    - 'db/**/*'
+    - 'config/**/*'
+    - 'node_modules/**/*'
+    - 'script/**/*'
+    - 'support/**/*'
+    - 'tmp/**/*'
+    - 'test/**/*'
+
+ConditionalAssignment:
+  Enabled: false
+StringLiterals:
+  Enabled: false
+RedundantReturn:
+  Enabled: false
+Documentation:
+  Enabled: false
+WordArray:
+  Enabled: false
+AbcSize:
+  Enabled: false
+MutableConstant:
+  Enabled: false
+SignalException:
+  Enabled: false
+Casecmp:
+  Enabled: false
+CyclomaticComplexity:
+  Enabled: false
+MissingRespondToMissing:
+  Enabled: false
+MethodMissingSuper:
+  Enabled: false
+Style/FrozenStringLiteralComment:
+  Enabled: false
+LineLength:
+  Max: 120
+Style/EmptyMethod:
+  Enabled: false
+Bundler/OrderedGems:
+  Enabled: false
+Style/TrailingCommaInHashLiteral:
+  Enabled: false
+Style/TrailingCommaInArguments:
+  Enabled: false
+Layout/DotPosition:
+  EnforcedStyle: trailing
+Layout/MultilineMethodCallIndentation:
+  EnforcedStyle: indented
+Layout/AlignHash:
+  EnforcedHashRocketStyle: table
+  EnforcedColonStyle: table

@@ -5,11 +5,13 @@ RSpec.describe User, type: :model do
     build(:users)
   end
 
-  it "owns many plants" do
-    expect(user).to have_many(:plants)
-  end
+  describe "associations" do
+    it "owns many plants" do
+      expect(user).to have_many(:plants)
+    end
 
-  it "has many care moments" do
-    expect(user).to have_many(:care_moments)
+    it "gives many care moments" do
+      expect(user).to have_many(:care_moments)
+    end
   end
 end

@@ -3,7 +3,6 @@ class Plant < ApplicationRecord
   SIZES = %w(small medium tall)
 
   belongs_to :owner, foreign_key: :user_id, class_name: 'User'
-
   has_many :care_moments, dependent: :destroy
 
   validates :name, presence: true
