@@ -21,6 +21,8 @@ gem 'coffee-rails', '~> 4.2'
 gem 'turbolinks', '~> 5'
 gem 'webpacker', '~> 3.5'
 
+gem 'simplecov', require: false, group: :test
+
 group :development, :test do
   gem 'rubocop'
   gem 'rspec-rails', '~> 3.8'

@@ -1,3 +1,5 @@
+require 'simplecov'
+
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 require 'spec_helper'
 ENV['RAILS_ENV'] ||= 'test'
@@ -40,17 +42,20 @@ end
 
 Capybara.register_driver :firefox_headless do |app|
   options = ::Selenium::WebDriver::Firefox::Options.new
-  options.args << '--headless'
+  # options.args << '--headless'
 
   Capybara::Selenium::Driver.new(app, browser: :firefox, options: options)
 end
 
 RSpec.configure do |config|
   config.include FactoryBot::Syntax::Methods
+  config.include Devise::Test::IntegrationHelpers, type: :system
 
   config.before(:each, type: :system) do
     driven_by :firefox_headless
   end
+
+
 
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
