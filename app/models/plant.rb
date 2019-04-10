@@ -8,7 +8,6 @@ class Plant < ApplicationRecord
 
   validates :name, presence: true
 
-
   scope :include_care_status, -> do
     selects = []
     joins   = []
