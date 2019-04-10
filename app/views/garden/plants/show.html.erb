@@ -11,7 +11,15 @@
           <%= image_tag @plant.photo_url, width: 200, height: 200 %>
         </div>
         <div class="details">
-          <h1><%= @plant.name %></h1>
+          <h1 class="title">
+            <%= @plant.name %>
+            <% if @plant.favorite? %>
+                <span class="favorite-label">💛</span>
+            <% else %>
+              <%= link_to "🖤", garden_plant_favorite_path(@plant), class: 'favorite-button', method: :post %>
+            <% end %>
+          </h1>
+
           <p class="room"><%= @plant.room %></p>
           <ul class="list-unstyled">
             <li><%= pluralize @plant.age_in_months, 'month' %></li>

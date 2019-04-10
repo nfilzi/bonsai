@@ -4,6 +4,21 @@
   width: 350px;
   display: flex;
 
+  .title {
+    display:         flex;
+    justify-content: space-between;
+    align-items:     baseline;
+
+    .favorite-button:hover {
+      text-decoration: none;
+    }
+
+    .favorite-button, .favorite-label {
+      font-size:    0.7em;
+      margin-left:  0.4em;
+    }
+  }
+
   .details {
     display: flex;
     flex-direction: column;

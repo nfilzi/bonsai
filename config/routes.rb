@@ -13,6 +13,7 @@ Rails.application.routes.draw do
 
     resources :plants do
       resources :care_moments, only: [:create]
+      resource :favorite, only: [:create], module: 'plants'
     end
   end
 end
