@@ -30,6 +30,12 @@ group :development, :test do
 
   gem 'pry-rails'
   gem 'pry-byebug'
+
+  gem 'launchy'
+  gem 'selenium-webdriver'
+  gem 'geckodriver-helper'
+
+  gem 'capybara'
 end
 
 group :development do
