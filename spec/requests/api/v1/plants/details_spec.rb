@@ -16,11 +16,7 @@ RSpec.describe "API - V1 - Plants", type: :request do
         expect(response.status).to eq(200)
         expect(response.content_type).to eq("application/json")
 
-        json_response = JSON.parse(response.body)
-
         plant = json_response["plants"]
-
-        # binding.pry
 
         expect(plant["name"]).to eq("Fyro")
         expect(plant["age_in_months"]).to eq(3)
@@ -28,16 +24,12 @@ RSpec.describe "API - V1 - Plants", type: :request do
       end
     end
 
-    # pending 'WIP'
-
     context "with its owner details" do
       it "works" do
         get "/api/plants/#{@plant.id}?with_owner=true", headers: { 'Accept' => 'application/json;version=1' }
 
         expect(response.status).to eq(200)
         expect(response.content_type).to eq("application/json")
-
-        json_response = JSON.parse(response.body)
 
         plant         = json_response["plants"]
         owner_details = plant["owner"]

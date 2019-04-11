@@ -1,6 +1,6 @@
 module Api
   module V1
-    class PlantBlueprint < Blueprinter::Base
+    class PlantBlueprint < BaseBlueprint
       identifier :id
 
       fields :name, :age_in_months, :size

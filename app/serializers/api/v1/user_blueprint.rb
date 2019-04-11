@@ -1,6 +1,6 @@
 module Api
   module V1
-    class UserBlueprint < Blueprinter::Base
+    class UserBlueprint < BaseBlueprint
       identifier :id
 
       fields :nickname, :level, :care_points

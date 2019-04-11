@@ -47,8 +47,11 @@ Capybara.register_driver :firefox_headless do |app|
   Capybara::Selenium::Driver.new(app, browser: :firefox, options: options)
 end
 
+Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
+
 RSpec.configure do |config|
-  # config.include Rack::Test::Methods
+  config.include RequestSpecHelper, type: :request
+
   config.include FactoryBot::Syntax::Methods
   config.include Devise::Test::IntegrationHelpers, type: :system
 
