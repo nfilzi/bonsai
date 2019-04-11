@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   namespace :api, defaults: { format: 'json' } do
     scope module: :v1, constraints: Routes::ApiConstraint.new(version: 1) do
-      resources :plants, only: [:show, :index]
+      resources :plants, only: [:show, :index, :create]
     end
   end
 

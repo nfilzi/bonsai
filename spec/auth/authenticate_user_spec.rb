@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Api::Auth::AuthenticateUser do
+RSpec.describe API::Auth::AuthenticateUser do
   let(:user) { create(:users) }
   let(:unsaved_user) { build(:users) }
 
@@ -19,7 +19,7 @@ RSpec.describe Api::Auth::AuthenticateUser do
       it 'raises an authentication error' do
 
         expect { invalid_auth.call }.to raise_error(
-          Api::Auth::Errors::AuthenticationError,
+          API::Auth::Errors::AuthenticationError,
           /Invalid credentials/
         )
       end

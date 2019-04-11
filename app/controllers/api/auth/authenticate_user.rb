@@ -1,4 +1,4 @@
-module Api
+module API
   module Auth
     class AuthenticateUser
       private
@@ -22,7 +22,7 @@ module Api
         user = User.find_by(email: email)
         return user if user && user.valid_password?(password)
 
-        raise(Api::Auth::Errors::AuthenticationError, Message.invalid_credentials)
+        raise(API::Auth::Errors::AuthenticationError, Message.invalid_credentials)
       end
     end
   end

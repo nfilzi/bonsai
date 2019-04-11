@@ -1,6 +1,6 @@
-module Api
+module API
   module Auth
-    class AuthorizeApiRequest
+    class AuthorizeRequest
       private
 
       attr_reader :headers

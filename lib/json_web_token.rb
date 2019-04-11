@@ -16,6 +16,6 @@ class JsonWebToken
     # rescue from all decode errors
   rescue JWT::DecodeError => e
     # raise custom error to be handled by custom handler
-    raise Api::Auth::Errors::InvalidToken, e.message
+    raise API::Auth::Errors::InvalidToken, e.message
   end
 end

@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Api::Auth::AuthorizeApiRequest do
+RSpec.describe API::Auth::AuthorizeRequest do
   let(:user) { create(:users) }
 
   describe '#call' do
@@ -21,7 +21,7 @@ RSpec.describe Api::Auth::AuthorizeApiRequest do
 
         it 'raises a MissingToken error' do
           expect { invalid_request.call }.to raise_error(
-            Api::Auth::Errors::MissingToken,
+            API::Auth::Errors::MissingToken,
             'Missing token'
           )
         end
@@ -33,7 +33,7 @@ RSpec.describe Api::Auth::AuthorizeApiRequest do
 
         it 'raises an InvalidToken error' do
           expect { invalid_request.call }.to raise_error(
-            Api::Auth::Errors::InvalidToken,
+            API::Auth::Errors::InvalidToken,
             /Invalid token/
           )
         end
@@ -45,7 +45,7 @@ RSpec.describe Api::Auth::AuthorizeApiRequest do
 
         it 'raises an error' do
           expect { request.call }.to raise_error(
-            Api::Auth::Errors::InvalidToken,
+            API::Auth::Errors::InvalidToken,
             /Signature has expired/
           )
         end
@@ -57,7 +57,7 @@ RSpec.describe Api::Auth::AuthorizeApiRequest do
 
         it 'handles JWT::DecodeError' do
           expect { invalid_request.call }.to raise_error(
-            Api::Auth::Errors::InvalidToken,
+            API::Auth::Errors::InvalidToken,
             /Not enough or too many segments/
           )
         end

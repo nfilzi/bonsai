@@ -1,4 +1,4 @@
-module Api
+module API
   module Auth
     module Errors
       class AuthenticationError < StandardError; end
