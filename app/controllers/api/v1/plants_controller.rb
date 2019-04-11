@@ -1,6 +1,6 @@
 module Api
   module V1
-    class PlantsController < ActionController::API
+    class PlantsController < BaseController
       def index
         plants = Plant.all
 
