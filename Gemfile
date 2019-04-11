@@ -21,11 +21,13 @@ gem 'coffee-rails', '~> 4.2'
 gem 'turbolinks', '~> 5'
 gem 'webpacker', '~> 3.5'
 
-gem 'simplecov', require: false, group: :test
-
+# API
 gem 'httparty'
 gem 'blueprinter'
 gem 'oj'
+gem 'jwt'
+
+gem 'simplecov', require: false, group: :test
 
 group :development, :test do
   gem 'rubocop'
