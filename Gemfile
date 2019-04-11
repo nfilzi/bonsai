@@ -23,6 +23,10 @@ gem 'webpacker', '~> 3.5'
 
 gem 'simplecov', require: false, group: :test
 
+gem 'httparty'
+gem 'blueprinter'
+gem 'oj'
+
 group :development, :test do
   gem 'rubocop'
   gem 'rspec-rails', '~> 3.8'

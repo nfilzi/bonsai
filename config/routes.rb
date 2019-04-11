@@ -1,5 +1,13 @@
+require_relative 'routes/api_constraint'
+
 Rails.application.routes.draw do
   root to: 'pages#home'
+
+  namespace :api, defaults: { format: 'json' } do
+    scope module: :v1, constraints: Routes::ApiConstraint.new(version: 1) do
+      resources :plants, only: [:show, :index]
+    end
+  end
 
   devise_for :users
 

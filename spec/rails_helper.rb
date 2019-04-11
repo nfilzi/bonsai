@@ -48,6 +48,7 @@ Capybara.register_driver :firefox_headless do |app|
 end
 
 RSpec.configure do |config|
+  # config.include Rack::Test::Methods
   config.include FactoryBot::Syntax::Methods
   config.include Devise::Test::IntegrationHelpers, type: :system
 
