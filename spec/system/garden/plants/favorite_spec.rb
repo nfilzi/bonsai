@@ -8,7 +8,7 @@ RSpec.describe 'Garden - Plants - Favorite', type: :system do
 
     visit garden_plant_path(plant)
 
-    find('a.favorite-plant').click
+    find('a.favorite-button').click
 
     expect(page).to have_css('.favorite-label')
   end

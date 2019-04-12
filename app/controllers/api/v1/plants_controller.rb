@@ -15,11 +15,17 @@ module API
       end
 
       def index
-        plants = if conditions.empty?
-          Plant.search('*', load: false).results
-        else
-          Plant.search('*', where: conditions, load: false).results
-        end
+        search = Plant.search(
+          query,
+          operator:      "or",
+          where:         filters,
+          aggs:          allowed_search_params,
+          match:         :word_middle,
+          scope_results: ->(results) { results.includes(:owner) },
+          load:          false
+        )
+
+        plants = search.results
 
         render json: PlantBlueprint.render(plants, root: :plants)
       end
@@ -38,8 +44,17 @@ module API
 
       private
 
-      def conditions
-        @conditions ||= params.slice(:size, :room)
+      def query
+        query = params[:query]
+        query ||= "*"
+      end
+
+      def allowed_search_params
+        [:size, :room]
+      end
+
+      def filters
+        params.slice(*allowed_search_params)
       end
 
       def plant_params

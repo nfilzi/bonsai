@@ -1,5 +1,6 @@
 class Plant < ApplicationRecord
-  searchkick
+  searchkick word_middle: [:name]
+
   scope :search_import, -> { includes(:owner) }
 
   ROOMS = %w(entrance living-room bedroom bathroom office)
