@@ -15,7 +15,11 @@ module API
       end
 
       def index
-        plants = Plant.all
+        plants = if conditions.empty?
+          Plant.search('*', load: false).results
+        else
+          Plant.search('*', where: conditions, load: false).results
+        end
 
         render json: PlantBlueprint.render(plants, root: :plants)
       end
@@ -33,6 +37,10 @@ module API
       end
 
       private
+
+      def conditions
+        @conditions ||= params.slice(:size, :room)
+      end
 
       def plant_params
         params.require(:plant).permit(

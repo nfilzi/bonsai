@@ -60,7 +60,17 @@ RSpec.configure do |config|
     driven_by :firefox_headless
   end
 
+  config.before(:suite) do
+    Plant.reindex
 
+    Searchkick.disable_callbacks
+  end
+
+  config.around(:each, search: true) do |example|
+    Searchkick.callbacks(true) do
+      example.run
+    end
+  end
 
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"

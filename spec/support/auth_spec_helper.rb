@@ -11,17 +11,15 @@ module AuthSpecHelper
     JsonWebToken.encode({ user_id: user_id }, (Time.now.to_i - 10))
   end
 
-  def valid_headers(user, version: 1)
+  def valid_headers(user)
     {
       "Authorization" => token_generator(user.id),
-      "Accept"        => "application/json;version=#{version}"
-    }
+    }.merge(api_headers)
   end
 
-  def invalid_headers(user, version: 1)
+  def invalid_headers(user)
     {
       "Authorization" => nil,
-      "Accept"        => "application/json;version=#{version}"
-    }
+    }.merge(api_headers)
   end
 end

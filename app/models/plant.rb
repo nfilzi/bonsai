@@ -1,4 +1,7 @@
 class Plant < ApplicationRecord
+  searchkick
+  scope :search_import, -> { includes(:owner) }
+
   ROOMS = %w(entrance living-room bedroom bathroom office)
   SIZES = %w(small medium tall)
 
@@ -57,5 +60,24 @@ class Plant < ApplicationRecord
     end
 
     include_care_status.where(conditions.join(' OR '))
+  end
+
+  private
+
+  def search_data
+    {
+      id:            id,
+      name:          name,
+      age_in_months: age_in_months,
+      size:          size,
+      room:          room,
+      photo_url:     photo_url,
+      created_at:    created_at,
+      owner: {
+        id:       owner.id,
+        nickname: owner.nickname,
+        email:    owner.email
+      }
+    }
   end
 end

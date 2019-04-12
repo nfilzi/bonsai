@@ -9,5 +9,11 @@ FactoryBot.define do
     trait :with_owner do
       association :owner, factory: :users
     end
+
+    trait :reindex do
+      after(:create) do |plant, _evaluator|
+        plant.reindex(refresh: true)
+      end
+    end
   end
 end
